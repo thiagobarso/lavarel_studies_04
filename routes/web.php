@@ -20,3 +20,12 @@ Route::get('/sqlite', function () {
         die("Não foi possível conectar com a base de dados . Erro: " . $e->getMessage());
     }
 });
+
+Route::get('/myconnection', function () {
+    try {
+        DB::connection('myconnection')->getPdo();
+        echo "Conexão com a base de dados: " . DB::connection()->getDatabaseName();
+    } catch (\Exception $e) {
+        die("Não foi possível conectar com a base de dados . Erro: " . $e->getMessage());
+    }
+});
